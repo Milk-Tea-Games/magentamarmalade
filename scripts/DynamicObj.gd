@@ -1,4 +1,3 @@
-tool 
 
 class_name DynamicEntity, "res://assets/images/icon_DynamicObj.png"
 
@@ -45,7 +44,9 @@ func find_facing_block():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	add_to_group("testa")
+
+	# Group management
+	add_to_group("dynamicentity")
 	# Replace with function body.
 
 

@@ -1,4 +1,3 @@
-tool
 class_name TileMapOrtMM, "res://assets/images/icon_TileMapOrt.png"
 
 extends TileMap

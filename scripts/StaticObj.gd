@@ -1,8 +1,8 @@
-tool
+
 
 class_name StaticEntity, "res://assets/images/icon_StaticObj.png"
 
-extends "res://scripts/BaseObj.gd"
+extends BaseObj
 
 var intensity: int
 
@@ -12,6 +12,8 @@ const light_type: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
+	add_to_group("staticentity")
 	pass # Replace with function body.
 
 

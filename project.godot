@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Manager",
+"class": "AudioManager",
+"language": "GDScript",
+"path": "res://scripts/AudioManagerObj.gd"
+}, {
 "base": "Node2D",
 "class": "BaseObj",
 "language": "GDScript",
@@ -24,10 +29,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/DynamicObj.gd"
 }, {
-"base": "Node2D",
+"base": "Manager",
 "class": "EntityManager",
 "language": "GDScript",
 "path": "res://scripts/EntityManagerObj.gd"
+}, {
+"base": "Reference",
+"class": "GutHookScript",
+"language": "GDScript",
+"path": "res://addons/gut/hook_script.gd"
+}, {
+"base": "Node",
+"class": "GutTest",
+"language": "GDScript",
+"path": "res://addons/gut/test.gd"
+}, {
+"base": "Manager",
+"class": "HUDManager",
+"language": "GDScript",
+"path": "res://scripts/HUDManager.gd"
 }, {
 "base": "Node2D",
 "class": "InventoryObjMM",
@@ -45,24 +65,44 @@ _global_script_classes=[ {
 "path": "res://scripts/ItemLabel.gd"
 }, {
 "base": "Node2D",
+"class": "Manager",
+"language": "GDScript",
+"path": "res://scripts/Manager.gd"
+}, {
+"base": "Manager",
 "class": "MapManager",
 "language": "GDScript",
 "path": "res://scripts/MapManagerObj.gd"
 }, {
-"base": "Node2D",
+"base": "StaticEntity",
+"class": "MapWarper",
+"language": "GDScript",
+"path": "res://scripts/MapWarper.gd"
+}, {
+"base": "Manager",
 "class": "ParticleManager",
 "language": "GDScript",
 "path": "res://scripts/ParticleManagerObj.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "DynamicEntity",
 "class": "Player",
 "language": "GDScript",
 "path": "res://scripts/PlayerObj.gd"
 }, {
-"base": "Node",
+"base": "Manager",
+"class": "StateManager",
+"language": "GDScript",
+"path": "res://scripts/StateManager.gd"
+}, {
+"base": "BaseObj",
 "class": "StaticEntity",
 "language": "GDScript",
 "path": "res://scripts/StaticObj.gd"
+}, {
+"base": "StaticEntity",
+"class": "TileMapFreeMM",
+"language": "GDScript",
+"path": "res://scripts/TilemapFree.gd"
 }, {
 "base": "TileMap",
 "class": "TileMapIsoMM",
@@ -80,17 +120,25 @@ _global_script_classes=[ {
 "path": "res://scripts/TimerObj.gd"
 } ]
 _global_script_class_icons={
+"AudioManager": "res://assets/images/icon_ParticleManager.png",
 "BaseObj": "",
 "Decoration": "res://assets/images/icon_Decoration.png",
 "DynamicEntity": "res://assets/images/icon_DynamicObj.png",
 "EntityManager": "res://assets/images/icon_EntityManager.png",
+"GutHookScript": "",
+"GutTest": "",
+"HUDManager": "res://assets/images/icon_HUDManager.png",
 "InventoryObjMM": "res://assets/images/icon_Inventory.png",
 "Item": "res://assets/images/icon_Item.png",
 "ItemLabel": "res://assets/images/icon_ItemLabel.png",
+"Manager": "",
 "MapManager": "res://assets/images/icon_MapManager.png",
+"MapWarper": "res://assets/images/icon_teleporter.png",
 "ParticleManager": "res://assets/images/icon_ParticleManager.png",
 "Player": "res://assets/images/icon_Player.png",
+"StateManager": "res://assets/images/icon_StateManager.png",
 "StaticEntity": "res://assets/images/icon_StaticObj.png",
+"TileMapFreeMM": "res://assets/images/icon_TileMapIso.png",
 "TileMapIsoMM": "res://assets/images/icon_TileMapIso.png",
 "TileMapOrtMM": "res://assets/images/icon_TileMapOrt.png",
 "TimerSP": "res://assets/images/timer.png"
@@ -107,6 +155,11 @@ config/icon="res://icon.png"
 window/size/width=1280
 window/size/height=720
 window/stretch/mode="2d"
+window/stretch/shrink=0.51
+
+[global]
+
+text=false
 
 [input]
 
@@ -124,3 +177,7 @@ common/enable_pause_aware_picking=true
 
 environment/default_clear_color=Color( 0.0862745, 0.0823529, 0.0823529, 1 )
 environment/default_environment="res://default_env.tres"
+
+[tiled_importer]
+
+enable_json_format=true

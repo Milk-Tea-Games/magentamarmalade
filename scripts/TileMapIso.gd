@@ -1,4 +1,4 @@
-tool
+
 class_name TileMapIsoMM, "res://assets/images/icon_TileMapIso.png"
 
 extends TileMap
