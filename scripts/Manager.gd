@@ -29,6 +29,9 @@ func call_child_method(): # For node-node interactions
 
 # Inter-Manager Behaviour
 
+func get_sibling(name):
+	return get_parent().get_node(name)
+
 func connect_to_sibling(sibling, sig, method):
 	connect(sig,get_parent().get_node(sibling),method)
 	pass

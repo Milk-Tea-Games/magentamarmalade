@@ -2,31 +2,34 @@ class_name Player, "res://assets/images/icon_Player.png"
 extends DynamicEntity
 
 # Global library
-const CORE = preload("res://scripts/CoreLib.gd")
-
+const CORELIB = preload("res://scripts/CoreLib.gd")
 # Constants
 
-const InputMap = CORE.InputMap
-const InputVectors = CORE.InputVectors
-const VectorEnum = CORE.VectorEnum
-const MAX_SPEED = CORE.MAX_SPEED
-const INTERACT_DISTANCE = CORE.INTERACT_DISTANCE
+const InputMap = CORELIB.InputMap
+const InputVectors = CORELIB.InputVectors
+const VectorEnum = CORELIB.VectorEnum
+const MAX_SPEED = CORELIB.MAX_SPEED
+const INTERACT_DISTANCE = CORELIB.INTERACT_DISTANCE
 const test = "PlayerObj"
 
 # Variables
-
 var state := "idle"
 var facedir := "down"
 var btndown = null
+
+# Managing Nodes
+onready var _Manager = get_manager()#get_tree().get_root().get_node("GAME").get_node("EntityManager")
+onready var MainObj = get_main()
+
+# Onready Variables
+onready var Player_exists = MainObj.Player_exists
 
 # Child Nodes
 onready var _PhysicksBody = $PhysicksBody
 onready var _Shape = get_node(@'PhysicksBody/Shape')
 onready var _Sprite = get_node(@'PhysicksBody/Sprite')
-onready var _AreaBody = get_node(@'Area2D')
 onready var _Animation_Player = $AnimationPlayer
 onready var _Camera = get_node(@'PhysicksBody/Camera2D')
-onready var _Manager = get_tree().get_root().get_node("GAME").get_node("EntityManager")
 onready var _Particles = _PhysicksBody.get_node(@'CPUParticles2D')
 
 # Physics vars
@@ -39,6 +42,7 @@ signal playerBeganExisting
 signal playerInteracted
 signal sentQuitRequest
 signal sentMapSwapRequest
+signal playerCheckedOverlap
 
 
 
@@ -75,6 +79,7 @@ func connect_manager_signals(): # Establishes signal connections to Entity Manag
 	connect("sentQuitRequest", _Manager, "send_quit_notif")
 	connect("playerInteracted", _Manager, "handle_player_interact")
 	connect("playerBeganExisting", _Manager, "on_playerBeganExisting", [])
+	connect("playerCheckedOverlap", _Manager, "check_overlap_player")
 
 
 ## Motion
@@ -103,6 +108,9 @@ func animate_by_velocity():
 
 ## action
 
+func swappies():
+	emit_signal("sentMapSwapRequest", "Chai_room")
+
 func interact_entity():
 	var direction_vector = InputVectors[VectorEnum[facedir]]
 	direction_vector = Vector2(direction_vector[0],direction_vector[1])
@@ -114,9 +122,9 @@ func interact_entity():
 			print("player interacted")
 	else:
 		var newmap = "Chai_Room"
-		var mainmap = "ASS_face"
+		#var mainmap = "ASS_face"
 		print("interact failed")
-		##emit_signal("sentMapSwapRequest", mainmap, newmap)
+		emit_signal("sentMapSwapRequest", newmap)
 	if(_Particles):
 		var dirvec  = InputVectors[VectorEnum[facedir]]
 		dirvec = Vector2(dirvec[0], dirvec[1]) * 100
@@ -126,20 +134,7 @@ func interact_entity():
 ## Detection
 
 func check_overlap():
-	var shape_radius = _Shape.get_shape().get_radius()
-	var position = _Shape.get_global_position()
-	var siblings = get_parent().get_children()
-	var close_siblings = []
-
-	for n in siblings:
-		var sibling_position = n._PhysicksBody.get_global_position()
-		var sibling_radius = n._Shape.get_shape().get_radius()
-		var distance = position.distance_to(sibling_position)
-		if( (distance < (shape_radius + sibling_radius) ) && !n.is_in_group("player")):
-			close_siblings.append(n)
-	print(close_siblings)
-	return close_siblings
-
+	emit_signal("playerCheckedOverlap")
 
 func get_shape():
 	return _Shape
@@ -149,11 +144,31 @@ func get_shape_radius():
 	if(_Shape and _Shape.get_shape()):
 		radius = _Shape.get_shape().get_radius()
 	return radius
+
+
+func avoid_redundancy():
+	if Player_exists:
+		queue_free()
+	else:
+		MainObj.Player_exists = true
+		Player_exists = true
+
+func setup_camera():
+	_Camera.align()
+	_Camera.make_current()
+
 # BUILTIN Functions
+
+func _init():
+	
+# Groupings
+	add_to_group("dynamicentity")
+	#add_to_group("entity")
+	add_to_group("player")
+
 
 func _ready():
 	# Setup
-
 	# Connections
 	connect_manager_signals()
 
@@ -161,27 +176,23 @@ func _ready():
 
 	emit_signal("playerBeganExisting", name)
 	
-	# Groupings
-	add_to_group("dynamicentity")
-	#add_to_group("entity")
-	add_to_group("player")
+	
 
 	# Camera Setup
-
-	_Camera.align()
-	_Camera.make_current()
+	setup_camera()
+	
 	pass # Replace with function body.
 
 	
 func _process(delta):
 	animate_by_velocity()
+	reverse_position_transform()
 	if Input.is_action_pressed("ui_interact"):
-		interact_entity()
+		swappies()##interact_entity()
 	elif Input.is_action_pressed("ui_cancel"):
 		send_quit_request()
 	
 	check_overlap()
-
 	#print(facedir)
 	#print(InputVectors[VectorEnum[facedir]])
 	

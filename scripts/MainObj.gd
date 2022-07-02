@@ -1,7 +1,7 @@
 extends Node2D
 
 var count: int = 0
-
+var Player_exists = false
 
 
 
@@ -20,7 +20,7 @@ func _ready():
 	randomize()
 	get_node("MapManager").add_map("ASP_face")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+
 	pass

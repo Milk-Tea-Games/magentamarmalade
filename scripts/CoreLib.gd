@@ -13,7 +13,7 @@ const test = "CoreLib"
 # Dynamic Object
 
 const VECTOR_ZERO = Vector2(0,0)
-const MAX_SPEED = 300
+const MAX_SPEED = 600 # 300 default
 
 func group_self_as_dynamic():
 	print(test)

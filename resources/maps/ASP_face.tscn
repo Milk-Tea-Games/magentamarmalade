@@ -22,23 +22,27 @@ __meta__ = {
 }
 
 [node name="MapBoundaries" type="StaticBody2D" parent="."]
+visible = false
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="MapBoundary" type="CollisionPolygon2D" parent="MapBoundaries"]
+visible = false
 build_mode = 1
 polygon = PoolVector2Array( 0, 24, 0, 4048, 2864, 4048, 2864, 0, 0, 0, 0, -8, 2872, -8, 2872, 4056, -8, 4056, -8, -8, 0, -8, 0, 0, -8, 0, 0, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="MapBoundaries"]
+[node name="Statue_face_boundary" type="StaticBody2D" parent="MapBoundaries"]
+visible = false
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MapBoundaries/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MapBoundaries/Statue_face_boundary"]
+visible = false
 polygon = PoolVector2Array( 752, 552, 648, 632, 456, 1000, 432, 1664, 440, 1904, 496, 2384, 392, 2632, 288, 2616, 224, 2616, 256, 2848, 504, 2992, 584, 2864, 712, 2824, 712, 2888, 1016, 3024, 1088, 2992, 1320, 2992, 1496, 2912, 1664, 2928, 1632, 2880, 1624, 2624, 1464, 2480, 1472, 2328, 1328, 2152, 1464, 2088, 1624, 2120, 1608, 2152, 1632, 2320, 1608, 2440, 1776, 2616, 1752, 2840, 1832, 2928, 1960, 2896, 2088, 2872, 2176, 2728, 2160, 2688, 2288, 2680, 2464, 2584, 2336, 2544, 2176, 2192, 2232, 1904, 2392, 2064, 2280, 1696, 2336, 984, 2208, 712, 1688, 400, 1240, 408, 1024, 592 )
 script = ExtResource( 4 )
 __meta__ = {
@@ -46,28 +50,54 @@ __meta__ = {
 }
 
 [node name="Decoration" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1880, 2968 )
+position = Vector2( 1776, 2448 )
 
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 2048, 3296 )
+position = Vector2( 1528, 2288 )
 
 [node name="MapWarper" parent="." instance=ExtResource( 3 )]
-position = Vector2( 2048, 3424 )
-destination = {
-"map": "Chai_Room",
-"position": Vector2( 40, 40 )
+visible = false
+position = Vector2( 1512, 2088 )
+outbound = {
+"map": "ASP_corridor_1",
+"station_id": 0
 }
 
 [node name="MapWarper2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1792, 3280 )
-destination = {
-"map": "Chai_Room",
-"position": Vector2( 40, 40 )
+visible = false
+position = Vector2( 1352, 2120 )
+outbound = {
+"map": "ASP_corridor_1",
+"station_id": 0
+}
+inbound = {
+"facedir": 1,
+"inbound_id": 1,
+"return_vector": Vector2( 100, 100 )
+}
+
+[node name="MapWarper4" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 1591, 2104 )
+outbound = {
+"map": "ASP_corridor_1",
+"station_id": 0
+}
+inbound = {
+"facedir": 1,
+"inbound_id": 0,
+"return_padding": 100
 }
 
 [node name="MapWarper3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 2216, 3280 )
-destination = {
-"map": "Chai_Room",
-"position": Vector2( 40, 40 )
+visible = false
+position = Vector2( 1424, 2088 )
+outbound = {
+"map": "ASP_corridor_1",
+"station_id": 0
+}
+inbound = {
+"facedir": 1,
+"inbound_id": 1,
+"return_vector": Vector2( 100, 100 )
 }
