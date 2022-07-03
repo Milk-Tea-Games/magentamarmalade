@@ -1,0 +1,43 @@
+ORGANIZATIONAL:
+	- Reorganize files according to godot project organization docs as far as is possible
+		- Regroup asset use according to scenes
+		- Make scenes/scenespaces have their own folders
+		- Leave reused assets in more generalized asset folders
+
+
+GAMECODE:
+	- Clean up existing codebase
+	- Place appropriate dev tags in code for future optimization
+	- Refactor code for unit testing integration
+	- Optimize code
+
+QualityControl:
+	- Create unit test plan
+	- Perform test-ready tests
+	- Make appropriate tagging in code to fix any testbugs
+	- Test until all clean
+	- Perform runtests
+
+
+ART:
+	
+	Chai:
+		- Redraw chai left and right sprites
+		- Redraw chai left and right walk animation
+		- Make chai idle animation (all directions)
+		- Draw chai diagonals (up and down)
+	
+	Environments:
+		- Determine map scale factors
+		- Scrawl chai bedroom
+		- Recompose/Redraw chai room
+
+AUDIO: 
+	
+	External:
+		- Contact Asutenki
+		- Contact Noryokun
+	
+	Internal:
+		- Make baselines
+			- Chai room xylo/glock

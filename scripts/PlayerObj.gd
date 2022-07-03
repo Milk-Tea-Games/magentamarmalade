@@ -13,7 +13,7 @@ const INTERACT_DISTANCE = CORELIB.INTERACT_DISTANCE
 const test = "PlayerObj"
 
 # Variables
-var state := "idle"
+var state := "idle" #TODO get rid of statemachine staging code
 var facedir := "down"
 var btndown = null
 
@@ -22,7 +22,7 @@ onready var _Manager = get_manager()#get_tree().get_root().get_node("GAME").get_
 onready var MainObj = get_main()
 
 # Onready Variables
-onready var Player_exists = MainObj.Player_exists
+onready var Player_exists = MainObj.Player_exists #REVIEW for more elegant signaling of playerexistence
 
 # Child Nodes
 onready var _PhysicksBody = $PhysicksBody

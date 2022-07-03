@@ -25,5 +25,4 @@ const INTERACT_DISTANCE = 250
 # Util
 
 func player_interact():
-	print(VectorEnum["left"])
-
+	pass

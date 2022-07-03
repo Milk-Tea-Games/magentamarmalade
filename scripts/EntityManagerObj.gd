@@ -16,6 +16,8 @@ signal sentMapSwapRequest(newmap)
 
 func transpose_player(value): # moves player to global Vector2 pos
 
+	#REVIEW examine positioning caveats on kinematicbody
+
 	var Player = get_player()
 	var end_pos := Vector2(500,500)
 	if Player:
@@ -67,10 +69,10 @@ func get_player_overlaps(): # grabs overlapping nodes if returned by check
 	var close_siblings = []
 
 	for n in siblings:
-		var sibling_position = n._PhysicksBody.get_global_position()
-		var sibling_radius = n._Shape.get_shape().get_radius()
+		var sibling_position = n._PhysicksBody.get_global_position() # TODO wrap child variable retrieval in parent functions for controlled variable exposure
+		var sibling_radius = n._Shape.get_shape().get_radius() # TODO ^
 		var distance = position.distance_to(sibling_position)
-		if( (distance < (shape_radius + sibling_radius) ) && !n.is_in_group("player")):
+		if( (distance < (shape_radius + sibling_radius) ) && !n.is_in_group("player")): # REVIEW examine logic 
 			close_siblings.append(n)
 	return close_siblings
 
@@ -84,13 +86,13 @@ func call_on_overlaps(overlappers):	# calls overlap functions for any overlappin
 
 
 # existence/init
-func on_playerBeganExisting(playername):
+func on_playerBeganExisting():
 	print("Manager: Player Exists!")
 	pass
 
 # Sibling: MapManager
 func handle_map_swap(destination): # Triggers on entity mapswap request
-	#print("ENTITYMANAGER RECEIVED REQUEST FOR MAPSWAP")
+# REVIEW examine use of signals here
 	emit_signal("sentMapSwapRequest", destination)
 
 func freeMapbound(): # Frees entities that cannot be held between maps
