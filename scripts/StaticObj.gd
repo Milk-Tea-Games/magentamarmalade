@@ -1,13 +1,9 @@
 
-
+# TODO rename file and fix references
 class_name StaticEntity, "res://assets/images/icon_StaticObj.png"
 
 extends BaseObj
 
-var intensity: int
-
-# light_type - permanence of light ray for light objects
-const light_type: bool = false
 
 
 # Called when the node enters the scene tree for the first time.

@@ -8,6 +8,7 @@ var Parent = null
 
 # Setup
 
+# FIXME this function needs to be redone to actually work. Maybe be reassigned as a core function
 func connect_to_many(signal_list):
 	for n in signal_list:
 		var node = n.node or self

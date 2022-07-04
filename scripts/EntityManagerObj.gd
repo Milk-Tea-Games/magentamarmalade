@@ -61,6 +61,8 @@ func check_overlap_player(): # checks for overlapping nodes and performs an over
 		call_on_overlaps(overlappers)
 
 func get_player_overlaps(): # grabs overlapping nodes if returned by check
+	# REVIEW entire function
+	# TODO hybrid approach using Area2Ds and/or basic trig
 	var _Player = get_node("Player")
 	var _PlayerShape = _Player.get_shape()
 	var shape_radius = _Player.get_shape_radius()

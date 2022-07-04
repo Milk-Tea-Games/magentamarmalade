@@ -87,12 +87,12 @@ func reparent_entities(map): # Reorganizes map entities to expected placement un
 				n.propagate_position_transform()
 				
 
-func get_map_by_name(mapname): # returns map with name mapname if it exists
+func get_map_by_name(mapname: String) -> Node: # returns map with name mapname if it exists
 
 	return get_node(mapname)
 
 
-func check_map_redundancy(mapname): # returns true if map with name mapname already exists
+func check_map_redundancy(mapname: String): # returns true if map with name mapname already exists
 
 	if get_node(mapname):
 		

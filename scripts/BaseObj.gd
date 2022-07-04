@@ -22,10 +22,10 @@ func get_manager():
 
 
 
-func get_pos():
+func get_pos(): #TODO examine further difference between position and global position and reimplement
 	return get_global_position()
 
-func find_in_array(key, array):
+func find_in_array(): #TODO actually write function
 	pass		
 
 
@@ -33,10 +33,12 @@ func find_in_array(key, array):
 # Transforms
 
 func propagate_position_transform(): # Corrects position of nodes children to be identical to parent
+	#TODO implement in physicsbody2d process logic instead of haphazardly here
 	if self._PhysicksBody:
 		self._PhysicksBody.set_global_position(self.get_global_position())
 
 func reverse_position_transform():
+	#TODO remove in accordance with reimplementation of above, physicsbody2d node logic can do this without needing outside rectification functions
 	if self._PhysicksBody:
 		var pos = self._PhysicksBody.get_global_position()
 		self.set_global_position(pos)
@@ -49,6 +51,8 @@ func rotate_by(r):
 	pass
 
 
+#TODO bulk grouping, bulk signal declaration, bulk connection functions
+#TODO generic instantiation functions for reimplementation
 
 # BUILTIN RUN FUNCTIONS
 

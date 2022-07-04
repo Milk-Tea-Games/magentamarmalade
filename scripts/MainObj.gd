@@ -11,8 +11,8 @@ var Player_exists = false
 # Singleton Reference
 
 
-
-
+#TODO child singleton fetch functions
+#TODO clock function
 
 
 # Called when the node enters the scene tree for the first time.

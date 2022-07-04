@@ -75,6 +75,7 @@ func send_quit_request():
 # Signal Functions
 
 func connect_manager_signals(): # Establishes signal connections to Entity Manager for external communications
+	# TODO make signals and connections run through parsed JSON.
 	connect("sentMapSwapRequest", _Manager, "handle_map_swap", [])
 	connect("sentQuitRequest", _Manager, "send_quit_notif")
 	connect("playerInteracted", _Manager, "handle_player_interact")
@@ -86,6 +87,8 @@ func connect_manager_signals(): # Establishes signal connections to Entity Manag
 
 
 ## Animation
+
+#TODO use animate by keypress instead of velocity
 func animate_by_velocity():
 	velocity = _PhysicksBody.velocity
 	var normalized_velocity = velocity.normalized()
@@ -108,23 +111,19 @@ func animate_by_velocity():
 
 ## action
 
-func swappies():
+func swappies(): #TODO remove test function
 	emit_signal("sentMapSwapRequest", "Chai_room")
 
 func interact_entity():
 	var direction_vector = InputVectors[VectorEnum[facedir]]
 	direction_vector = Vector2(direction_vector[0],direction_vector[1])
-	var endpoint = get_pos("Shape") + (direction_vector * INTERACT_DISTANCE)
+	var endpoint = get_pos("Shape") + (direction_vector * INTERACT_DISTANCE) #TODO shorten interact range
 	var result = space_state.intersect_ray(get_pos(), endpoint)
 	if result and result.collider:
 		if(result.collider.is_in_group("interact")):
 			emit_signal("playerInteracted", result, name) # 
-			print("player interacted")
 	else:
-		var newmap = "Chai_Room"
-		#var mainmap = "ASS_face"
-		print("interact failed")
-		emit_signal("sentMapSwapRequest", newmap)
+		pass
 	if(_Particles):
 		var dirvec  = InputVectors[VectorEnum[facedir]]
 		dirvec = Vector2(dirvec[0], dirvec[1]) * 100
