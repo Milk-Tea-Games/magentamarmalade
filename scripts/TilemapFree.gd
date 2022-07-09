@@ -1,4 +1,4 @@
-class_name TileMapFreeMM, "res://assets/images/icon_TileMapIso.png"
+class_name TileMapFreeMM, "res://assets/images/editor/icon_TileMapIso.png"
 
 extends StaticEntity
 	

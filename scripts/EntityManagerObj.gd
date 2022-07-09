@@ -1,5 +1,5 @@
 
-class_name EntityManager, "res://assets/images/icon_EntityManager.png"
+class_name EntityManager, "res://assets/images/editor/icon_EntityManager.png"
 
 extends Manager
 

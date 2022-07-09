@@ -1,3 +1,3 @@
-class_name AudioManager, "res://assets/images/icon_ParticleManager.png"
+class_name AudioManager, "res://assets/images/editor/icon_ParticleManager.png"
 
 extends Manager

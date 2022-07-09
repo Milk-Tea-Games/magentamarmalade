@@ -1,5 +1,5 @@
 
 
-class_name StateManager, "res://assets/images/icon_StateManager.png"
+class_name StateManager, "res://assets/images/editor/icon_StateManager.png"
 
 extends Manager

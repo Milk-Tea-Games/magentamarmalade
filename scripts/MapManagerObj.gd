@@ -1,5 +1,5 @@
 
-class_name MapManager,"res://assets/images/icon_MapManager.png"
+class_name MapManager,"res://assets/images/editor/icon_MapManager.png"
 extends Manager
 
 var current_mapname: String =  "ASP_face" setget set_mapname, get_mapname

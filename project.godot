@@ -118,42 +118,30 @@ _global_script_classes=[ {
 "class": "TimerSP",
 "language": "GDScript",
 "path": "res://scripts/TimerObj.gd"
-}, {
-"base": "Reference",
-"class": "WAT",
-"language": "GDScript",
-"path": "res://addons/WAT/namespace.gd"
-}, {
-"base": "Node",
-"class": "WATTest",
-"language": "GDScript",
-"path": "res://addons/WAT/test/test.gd"
 } ]
 _global_script_class_icons={
-"AudioManager": "res://assets/images/icon_ParticleManager.png",
+"AudioManager": "res://assets/images/editor/icon_ParticleManager.png",
 "BaseObj": "",
-"Decoration": "res://assets/images/icon_Decoration.png",
-"DynamicEntity": "res://assets/images/icon_DynamicObj.png",
-"EntityManager": "res://assets/images/icon_EntityManager.png",
+"Decoration": "res://assets/images/editor/icon_Decoration.png",
+"DynamicEntity": "res://assets/images/editor/icon_DynamicObj.png",
+"EntityManager": "res://assets/images/editor/icon_EntityManager.png",
 "GutHookScript": "",
 "GutTest": "",
-"HUDManager": "res://assets/images/icon_HUDManager.png",
-"InventoryObjMM": "res://assets/images/icon_Inventory.png",
-"Item": "res://assets/images/icon_Item.png",
-"ItemLabel": "res://assets/images/icon_ItemLabel.png",
+"HUDManager": "res://assets/images/editor/icon_HUDManager.png",
+"InventoryObjMM": "res://assets/images/editor/icon_Inventory.png",
+"Item": "res://assets/images/editor/icon_Item.png",
+"ItemLabel": "res://assets/images/editor/icon_ItemLabel.png",
 "Manager": "",
-"MapManager": "res://assets/images/icon_MapManager.png",
-"MapWarper": "res://assets/images/icon_teleporter.png",
-"ParticleManager": "res://assets/images/icon_ParticleManager.png",
-"Player": "res://assets/images/icon_Player.png",
-"StateManager": "res://assets/images/icon_StateManager.png",
-"StaticEntity": "res://assets/images/icon_StaticObj.png",
-"TileMapFreeMM": "res://assets/images/icon_TileMapIso.png",
-"TileMapIsoMM": "res://assets/images/icon_TileMapIso.png",
-"TileMapOrtMM": "res://assets/images/icon_TileMapOrt.png",
-"TimerSP": "res://assets/images/timer.png",
-"WAT": "",
-"WATTest": ""
+"MapManager": "res://assets/images/editor/icon_MapManager.png",
+"MapWarper": "res://assets/images/editor/icon_teleporter.png",
+"ParticleManager": "res://assets/images/editor/icon_ParticleManager.png",
+"Player": "res://assets/images/editor/icon_Player.png",
+"StateManager": "res://assets/images/editor/icon_StateManager.png",
+"StaticEntity": "res://assets/images/editor/icon_StaticObj.png",
+"TileMapFreeMM": "res://assets/images/editor/icon_TileMapIso.png",
+"TileMapIsoMM": "res://assets/images/editor/icon_TileMapIso.png",
+"TileMapOrtMM": "res://assets/images/editor/icon_TileMapOrt.png",
+"TimerSP": "res://assets/images/editor/timer.png"
 }
 
 [WAT]
@@ -171,7 +159,7 @@ Display=8
 [application]
 
 config/name="Magenta"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/objects/main.tscn"
 config/icon="res://icon.png"
 
 [display]

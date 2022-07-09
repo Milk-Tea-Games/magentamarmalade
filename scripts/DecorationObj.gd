@@ -1,4 +1,4 @@
-class_name Decoration, "res://assets/images/icon_Decoration.png"
+class_name Decoration, "res://assets/images/editor/icon_Decoration.png"
 
 extends StaticBody2D
 

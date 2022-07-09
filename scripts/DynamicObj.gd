@@ -1,5 +1,5 @@
 
-class_name DynamicEntity, "res://assets/images/icon_DynamicObj.png"
+class_name DynamicEntity, "res://assets/images/editor/icon_DynamicObj.png"
 
 extends BaseObj
 

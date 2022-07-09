@@ -1,6 +1,6 @@
 
 # TODO rename file and fix references
-class_name StaticEntity, "res://assets/images/icon_StaticObj.png"
+class_name StaticEntity, "res://assets/images/editor/icon_StaticObj.png"
 
 extends BaseObj
 

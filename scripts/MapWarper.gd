@@ -1,4 +1,4 @@
-class_name MapWarper, "res://assets/images/icon_teleporter.png"
+class_name MapWarper, "res://assets/images/editor/icon_teleporter.png"
 extends StaticEntity
 
 export var outbound = {

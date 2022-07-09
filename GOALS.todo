@@ -1,18 +1,20 @@
 ORGANIZATIONAL:
-	- Reorganize files according to godot project organization docs as far as is possible
-		- Regroup asset use according to scenes
-		- Make scenes/scenespaces have their own folders
-		- Leave reused assets in more generalized asset folders
-
+	- Reorganize files according to godot project organization docs as far as is possible @done
+		- Regroup asset use according to scenes @done
+		- Make scenes/scenespaces have their own folders @done
+		- Leave reused assets in more generalized asset folders @done
+	- Remove files from unused addons
+	- Fix broken asset file references
+	- 
 
 GAMECODE:
-	- Clean up existing codebase
-	- Place appropriate dev tags in code for future optimization
-	- Refactor code for unit testing integration
-	- Optimize code
+	- Clean up existing codebase @inprog
+	- Place appropriate dev tags in code for future optimization @inprog
+	- Refactor code for unit testing integration @inprog
+	- Optimize code @inprog
 
-QualityControl:
-	- Create unit test plan
+TESTING AND REVIEW:
+	- Create unit test plan @inprog
 	- Perform test-ready tests
 	- Make appropriate tagging in code to fix any testbugs
 	- Test until all clean
@@ -40,4 +42,4 @@ AUDIO:
 	
 	Internal:
 		- Make baselines
-			- Chai room xylo/glock
+			- Chai room xylo/glock @inprog

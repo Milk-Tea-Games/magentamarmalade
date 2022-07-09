@@ -1,4 +1,4 @@
-class_name Player, "res://assets/images/icon_Player.png"
+class_name Player, "res://assets/images/editor/icon_Player.png"
 extends DynamicEntity
 
 # Global library

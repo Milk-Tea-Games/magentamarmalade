@@ -1,3 +1,3 @@
 
 
-class_name Item, "res://assets/images/icon_Item.png"
+class_name Item, "res://assets/images/editor/icon_Item.png"

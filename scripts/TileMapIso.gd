@@ -1,5 +1,5 @@
 
-class_name TileMapIsoMM, "res://assets/images/icon_TileMapIso.png"
+class_name TileMapIsoMM, "res://assets/images/editor/icon_TileMapIso.png"
 
 extends TileMap
 
