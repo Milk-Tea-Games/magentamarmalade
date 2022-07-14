@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/TilemapFree.gd" type="Script" id=1]
 [ext_resource path="res://assets/images/region_liminal/Liminal_1.png" type="Texture" id=2]
-[ext_resource path="res://resources/template_entities/MapWarper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/objects/MapWarper.tscn" type="PackedScene" id=3]
 
 [node name="ASP_corridor_1" type="Node2D"]
 script = ExtResource( 1 )
@@ -29,7 +29,6 @@ __meta__ = {
 }
 
 [node name="MapWarper" parent="." instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 1440, 2344 )
 outbound = {
 "map": "ASP_face",
@@ -37,7 +36,6 @@ outbound = {
 }
 
 [node name="MapWarper4" parent="." instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 616, 3840 )
 outbound = {
 "map": "ASP_spire",
@@ -50,7 +48,6 @@ inbound = {
 }
 
 [node name="MapWarper2" parent="." instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 1288, 2344 )
 outbound = {
 "map": "ASP_face",
@@ -63,7 +60,6 @@ inbound = {
 }
 
 [node name="MapWarper3" parent="." instance=ExtResource( 3 )]
-visible = false
 position = Vector2( 1592, 2344 )
 outbound = {
 "map": "ASP_face",

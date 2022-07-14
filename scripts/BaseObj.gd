@@ -2,7 +2,7 @@ class_name BaseObj
 
 extends Node2D
 
-var Parent : Node
+const CORELIB = preload("res://scripts/CoreLib.gd")
 ## CUSTOM METHODS
 
 
@@ -13,10 +13,15 @@ var Parent : Node
 
 # Managers
 func get_main():
-	return get_tree().get_root().get_node("GAME")
+	var main_name : String = get_tree().get_root().get_children()[0].get_name()
+	var expected_name = CORELIB.MAINNODENAME
+	if(main_name == expected_name):
+		return get_tree().get_root().get_node(main_name)
+	else:
+		return get_tree().get_root().get_node(main_name).get_node(expected_name)
 
 func get_manager():
-	return get_main().get_node("EntityManager")
+	return get_parent().get_parent().get_node("EntityManager")#get_main().get_node("EntityManager")
 
 # Utility
 

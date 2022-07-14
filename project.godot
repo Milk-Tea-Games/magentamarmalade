@@ -64,6 +64,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/ItemLabel.gd"
 }, {
+"base": "Reference",
+"class": "MagentaLib",
+"language": "GDScript",
+"path": "res://scripts/CoreLib.gd"
+}, {
+"base": "Node",
+"class": "MainObj",
+"language": "GDScript",
+"path": "res://scripts/MainObj.gd"
+}, {
 "base": "Node2D",
 "class": "Manager",
 "language": "GDScript",
@@ -131,6 +141,8 @@ _global_script_class_icons={
 "InventoryObjMM": "res://assets/images/editor/icon_Inventory.png",
 "Item": "res://assets/images/editor/icon_Item.png",
 "ItemLabel": "res://assets/images/editor/icon_ItemLabel.png",
+"MagentaLib": "",
+"MainObj": "",
 "Manager": "",
 "MapManager": "res://assets/images/editor/icon_MapManager.png",
 "MapWarper": "res://assets/images/editor/icon_teleporter.png",
@@ -159,7 +171,7 @@ Display=8
 [application]
 
 config/name="Magenta"
-run/main_scene="res://scenes/objects/main.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/icon="res://icon.png"
 
 [display]

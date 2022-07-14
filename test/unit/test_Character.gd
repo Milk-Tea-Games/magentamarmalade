@@ -12,6 +12,7 @@ func before_all():
 
 func after_all():
 	gut.p("ran run teardown", 2)
+	gut.p(get_tree().get_root().get_children())
 
 func test_assert_eq_number_not_equal():
 	assert_eq(1, 2, "Should fail.  1 != 2")

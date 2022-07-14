@@ -3,12 +3,10 @@ class_name EntityManager, "res://assets/images/editor/icon_EntityManager.png"
 
 extends Manager
 
-const CORE = preload("res://scripts/CoreLib.gd")
-
 # Custom Signals
 
 signal sentQuitRequest
-signal sentMapSwapRequest(newmap)
+signal deliveredMapSwapRequest(newmap)
 # Custom Methods
 
 
@@ -95,7 +93,7 @@ func on_playerBeganExisting():
 # Sibling: MapManager
 func handle_map_swap(destination): # Triggers on entity mapswap request
 # REVIEW examine use of signals here
-	emit_signal("sentMapSwapRequest", destination)
+	emit_signal("deliveredMapSwapRequest", destination)
 
 func freeMapbound(): # Frees entities that cannot be held between maps
 	var children = get_children()
@@ -118,8 +116,9 @@ func send_quit_notif(): # Triggers on entity quit request
 
 
 func connect_mapmanager_signals():
-	connect("sentMapSwapRequest", get_parent().get_node("MapManager"), "swap_map")
-
+	var _MapManager = get_sibling("MapManager")
+	connect("deliveredMapSwapRequest", get_parent().get_node("MapManager"), "swap_map")
+	_MapManager.connect("requestedFreeMapbound", self, "freeMapbound")
 
 func _ready():
 

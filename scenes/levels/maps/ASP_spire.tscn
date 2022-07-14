@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/images/region_liminal/Liminal_6_10p.png" type="Texture" id=1]
 [ext_resource path="res://scripts/TilemapFree.gd" type="Script" id=2]
-[ext_resource path="res://resources/template_entities/MapWarper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/objects/MapWarper.tscn" type="PackedScene" id=3]
 
 [node name="ASP_spire" type="Node2D"]
 script = ExtResource( 2 )

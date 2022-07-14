@@ -1,16 +1,17 @@
 class_name Player, "res://assets/images/editor/icon_Player.png"
 extends DynamicEntity
 
-# Global library
-const CORELIB = preload("res://scripts/CoreLib.gd")
-# Constants
+# Not Constants
 
-const InputMap = CORELIB.InputMap
-const InputVectors = CORELIB.InputVectors
-const VectorEnum = CORELIB.VectorEnum
-const MAX_SPEED = CORELIB.MAX_SPEED
-const INTERACT_DISTANCE = CORELIB.INTERACT_DISTANCE
-const test = "PlayerObj"
+var InputMap = CORELIB.InputMap
+var InputVectors = CORELIB.InputVectors
+var VectorEnum = CORELIB.VectorEnum
+var MAX_SPEED = CORELIB.MAX_SPEED
+var INTERACT_DISTANCE = CORELIB.INTERACT_DISTANCE
+var test = "PlayerObj"
+
+
+
 
 # Variables
 var state := "idle" #TODO get rid of statemachine staging code
@@ -18,11 +19,12 @@ var facedir := "down"
 var btndown = null
 
 # Managing Nodes
-onready var _Manager = get_manager()#get_tree().get_root().get_node("GAME").get_node("EntityManager")
-onready var MainObj = get_main()
+onready var _MainObj = get_parent().get_parent()#get_main()
+onready var _Manager = _MainObj.get_node("EntityManager")#get_manager()#get_tree().get_root().get_node("GAME").get_node("EntityManager")
+
 
 # Onready Variables
-onready var Player_exists = MainObj.Player_exists #REVIEW for more elegant signaling of playerexistence
+onready var Player_exists = _MainObj.Player_exists #REVIEW for more elegant signaling of playerexistence
 
 # Child Nodes
 onready var _PhysicksBody = $PhysicksBody
@@ -68,7 +70,6 @@ func get_pos(component = "Shape"):
 
 func send_quit_request():
 	emit_signal("sentQuitRequest")
-	print("quitattempt")
 
 
 
@@ -149,7 +150,7 @@ func avoid_redundancy():
 	if Player_exists:
 		queue_free()
 	else:
-		MainObj.Player_exists = true
+		_MainObj.Player_exists = true
 		Player_exists = true
 
 func setup_camera():

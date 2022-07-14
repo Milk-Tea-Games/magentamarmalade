@@ -3,10 +3,12 @@
 [ext_resource path="res://addons/gut/plugin_control.gd" type="Script" id=1]
 
 [node name="Gut" type="Control"]
-margin_right = 1846.0
-margin_bottom = 1233.0
+margin_right = 2108.0
+margin_bottom = 1180.0
 rect_min_size = Vector2( 740, 250 )
 script = ExtResource( 1 )
+_font_size = 50
+_should_maximize = true
 _directory1 = "res://test"
 _directory2 = "res://test/unit"
 _directory3 = "res://test/integration"

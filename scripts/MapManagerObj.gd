@@ -2,7 +2,7 @@
 class_name MapManager,"res://assets/images/editor/icon_MapManager.png"
 extends Manager
 
-var current_mapname: String =  "ASP_face" setget set_mapname, get_mapname
+var current_mapname: String setget set_mapname, get_mapname
 
 
 
@@ -21,7 +21,7 @@ func load_map(mapname): # Loads map of mapname from disk if map is in maps folde
 
 	if !check_map_redundancy(mapname) :
 
-		var map = load("res://resources/maps/" + mapname + ".tscn")
+		var map = load("res://scenes/levels/maps/" + mapname + ".tscn")
 		map = map.instance()
 		#print(map.get_children())
 		remove_redundant_player(map)
@@ -41,7 +41,7 @@ func add_map(map):
 
 func free_map(map): # Removes map from SceneTree
 	
-	map.queue_free()
+	map.free()
 	free_mapbound_entities()
 
 func free_mapbound_entities(): # frees entities that cannot persist between mapswaps
@@ -49,7 +49,7 @@ func free_mapbound_entities(): # frees entities that cannot persist between maps
 
 
 func swap_map(map): # Replaces map1 with map2 in the Mapmanager's childspace
-	
+	print("swapmap called")
 	var oldmap = get_node(get_mapname())
 	
 	if map and oldmap:
@@ -70,7 +70,7 @@ func reparent_entities(map): # Reorganizes map entities to expected placement un
 
 	if children:
 
-		var new_parent = get_tree().get_root().get_node("GAME").get_node("EntityManager")
+		var new_parent = get_parent().get_node("EntityManager")#CORELIB.get_main(self).get_node("EntityManager")
 		print(new_parent.get_name())
 
 		for n in children:
@@ -137,8 +137,8 @@ func get_map_children():
 	return get_node(get_mapname()).get_children()
 
 func remove_redundant_player(mapinstance):
-	if mapinstance.get_node("Player") and get_current_map():
-		mapinstance.get_node("Player").queue_free()
+	if mapinstance.get_node("Player") and get_current_mapname():
+		mapinstance.get_node("Player").free()
 
 
 
@@ -154,8 +154,6 @@ func _init():
 
 func _ready():
 	# Signals
-
-	connect("requestedFreeMapbound", get_sibling("EntityManager"), "freeMapbound")
 	pass
 
 func _process(_delta):

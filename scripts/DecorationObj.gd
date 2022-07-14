@@ -5,6 +5,7 @@ extends StaticBody2D
 
 var _PhysicksBody = self
 var test = "I am a decoration"
+
 func get_pos():
 	return get_global_position()
 

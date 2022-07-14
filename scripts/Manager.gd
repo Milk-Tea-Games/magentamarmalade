@@ -2,9 +2,11 @@ class_name Manager
 
 extends Node2D
 
+
+var CORELIB = MagentaLib.new()
+
 onready var TREE = get_tree()
 onready var ROOT = TREE.get_root()
-var Parent = null
 
 # Setup
 
@@ -40,5 +42,4 @@ func connect_to_sibling(sibling, sig, method):
 func send_manpack():
 	pass
 
-func _init():
-	Parent = get_parent()
+

@@ -36,7 +36,7 @@ func on_overlap_player(): # Overlap callback
 # Map Exchange
 
 func request_map_warp():
-
+	#print("warp emit")
 	emit_signal("sentMapSwapRequest", outbound.map)
 	emit_signal("requestedPlayerTranspose", outbound.station_id)
 	emit_signal("requestedRealignCamera")
@@ -50,9 +50,7 @@ func get_station_id(): # returns inbound id for use in warper-to-warper teleport
 func _ready():
 
 
-	var _Manager = get_manager()
-
-
+	var _Manager = get_parent().get_parent().get_node("EntityManager")
 	# Groups
 	#add_to_group("entity")
 	add_to_group("interact")

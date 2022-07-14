@@ -2,19 +2,19 @@
 extends KinematicBody2D
 
 # Global library
-const CORE = preload("res://scripts/CoreLib.gd")
+var CORELIB = MagentaLib.new()
 
 # Constants
 
-const InputMap = CORE.InputMap
-const InputVectors = CORE.InputVectors
-const VectorEnum = CORE.VectorEnum
-const MAX_SPEED = CORE.MAX_SPEED
-const vectorZero = CORE.VECTOR_ZERO
-const test = "PlayerObj"
+var InputMap = CORELIB.InputMap
+var InputVectors = CORELIB.InputVectors
+var VectorEnum = CORELIB.VectorEnum
+var MAX_SPEED = CORELIB.MAX_SPEED
+var vectorZero = CORELIB.VECTOR_ZERO
+var test = "PlayerObj"
 # Class-Specific variables
 
-var velocity = CORE.VECTOR_ZERO
+var velocity = CORELIB.VECTOR_ZERO
 var acceleration = 1000
 var friction = 2
 var facedir = "down"

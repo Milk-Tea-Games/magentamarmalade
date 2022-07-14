@@ -3,11 +3,11 @@ class_name DynamicEntity, "res://assets/images/editor/icon_DynamicObj.png"
 
 extends BaseObj
 
+const vectorZero = Vector2(0,0)
 
 var power: int
 var properties: Array
 var velocity = Vector2(1,0)
-const vectorZero = Vector2(0,0)
 #const anim: array
 
 #### CUSTOM METHODS

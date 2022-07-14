@@ -1,24 +1,26 @@
 ORGANIZATIONAL:
-	- Reorganize files according to godot project organization docs as far as is possible @done
+	- Reorganize files according to godot project organization docs @done
 		- Regroup asset use according to scenes @done
 		- Make scenes/scenespaces have their own folders @done
 		- Leave reused assets in more generalized asset folders @done
-	- Remove files from unused addons
-	- Fix broken asset file references
-	- 
+	- Remove files from unused addons @done
+	- Fix broken asset file references @done
+	- Fix type casing to conform to godot docs suggested standards
 
 GAMECODE:
 	- Clean up existing codebase @inprog
 	- Place appropriate dev tags in code for future optimization @inprog
 	- Refactor code for unit testing integration @inprog
 	- Optimize code @inprog
+	- Fix signal mismatching due to changes
 
 TESTING AND REVIEW:
 	- Create unit test plan @inprog
-	- Perform test-ready tests
+	- Perform test-ready tests @done
 	- Make appropriate tagging in code to fix any testbugs
 	- Test until all clean
 	- Perform runtests
+	- Make code more test-ready
 
 
 ART:
@@ -31,7 +33,6 @@ ART:
 	
 	Environments:
 		- Determine map scale factors
-		- Scrawl chai bedroom
 		- Recompose/Redraw chai room
 
 AUDIO: 
@@ -43,3 +44,4 @@ AUDIO:
 	Internal:
 		- Make baselines
 			- Chai room xylo/glock @inprog
+			- Dream transition SFX 1
