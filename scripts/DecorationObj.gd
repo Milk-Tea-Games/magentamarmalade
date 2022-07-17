@@ -19,5 +19,4 @@ func on_interact(spec):
 # BUILTIN Functions
 
 func _ready():
-	add_to_group("entity")
-	add_to_group("staticentitiy") # REVIEW candidacy for this group
+	pass

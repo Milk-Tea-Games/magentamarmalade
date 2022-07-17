@@ -14,9 +14,9 @@ export var inbound = {
 }
 onready var _EntityManager = get_manager()
 
-onready var _PhysicksBody = get_node(@'Decoration') # Decoration is a staticbody2d extending class and provides the only physics for this class
-onready var _Decoration = _PhysicksBody
-onready var _Shape = _Decoration.get_node("CollisionShape2D")
+onready var _PhysicksBody : Node = get_node("Decoration") # Decoration is a staticbody2d extending class and provides the only physics for this class
+onready var _Decoration : Node = _PhysicksBody
+onready var _Shape : Node = _PhysicksBody.get_node("CollisionShape2D")
 
 
 # Signals

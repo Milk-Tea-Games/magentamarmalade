@@ -28,7 +28,7 @@ func _ready():
 	add_child(_MapManager)
 	add_child(_EntityManager)
 
-	get_node("MapManager").add_map("ASP_face")
+	get_node("MapManager").add_map("Void")
 	#print(get_tree().get_root().get_children()[0].get_name())
 	pass
 func _process(_delta):

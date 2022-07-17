@@ -12,7 +12,23 @@ const CORELIB = preload("res://scripts/CoreLib.gd")
 
 
 # Managers
+
+func get_ancestor_by_name(node , name):
+	if node and name:
+		var current_ancestor : Node = node.get_parent()
+
+		if current_ancestor: #
+
+			var current_ancestor_name : String = current_ancestor.get_name()
+
+			if current_ancestor_name == name:
+				return current_ancestor
+			else:
+				return get_ancestor_by_name(current_ancestor, name)
+		
+
 func get_main():
+
 	var main_name : String = get_tree().get_root().get_children()[0].get_name()
 	var expected_name = CORELIB.MAINNODENAME
 	if(main_name == expected_name):

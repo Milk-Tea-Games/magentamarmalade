@@ -19,7 +19,7 @@ var facedir := "down"
 var btndown = null
 
 # Managing Nodes
-onready var _MainObj = get_parent().get_parent()#get_main()
+onready var _MainObj = get_ancestor_by_name(self,"GAME")
 onready var _Manager = _MainObj.get_node("EntityManager")#get_manager()#get_tree().get_root().get_node("GAME").get_node("EntityManager")
 
 
@@ -32,7 +32,7 @@ onready var _Shape = get_node(@'PhysicksBody/Shape')
 onready var _Sprite = get_node(@'PhysicksBody/Sprite')
 onready var _Animation_Player = $AnimationPlayer
 onready var _Camera = get_node(@'PhysicksBody/Camera2D')
-onready var _Particles = _PhysicksBody.get_node(@'CPUParticles2D')
+onready var _Particles #= _PhysicksBody.get_node(@'CPUParticles2D')
 
 # Physics vars
 onready var space_state = get_world_2d().direct_space_state
@@ -154,15 +154,15 @@ func avoid_redundancy():
 		Player_exists = true
 
 func setup_camera():
-	_Camera.align()
-	_Camera.make_current()
+	if _Camera:
+		_Camera.align()
+		_Camera.make_current()
 
 # BUILTIN Functions
 
 func _init():
 	
 # Groupings
-	add_to_group("dynamicentity")
 	#add_to_group("entity")
 	add_to_group("player")
 

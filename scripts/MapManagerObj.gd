@@ -11,11 +11,17 @@ var current_mapname: String setget set_mapname, get_mapname
 
 signal requestedFreeMapbound
 
+
+
+
 func set_mapname(newmapname):
 	current_mapname = newmapname
 
 func get_mapname():
 	return current_mapname
+
+
+
 
 func load_map(mapname): # Loads map of mapname from disk if map is in maps folder, returns map node reference
 
@@ -24,10 +30,12 @@ func load_map(mapname): # Loads map of mapname from disk if map is in maps folde
 		var map = load("res://scenes/levels/maps/" + mapname + ".tscn")
 		map = map.instance()
 		#print(map.get_children())
-		remove_redundant_player(map)
+		#remove_redundant_player(map)
 		reparent_entities(map)
 
 		return map
+
+
 
 
 func add_map(map):
@@ -39,6 +47,8 @@ func add_map(map):
 	set_mapname(map.name)
 	
 
+
+
 func free_map(map): # Removes map from SceneTree
 	
 	map.free()
@@ -46,6 +56,9 @@ func free_map(map): # Removes map from SceneTree
 
 func free_mapbound_entities(): # frees entities that cannot persist between mapswaps
 	emit_signal("requestedFreeMapbound")
+
+
+
 
 
 func swap_map(map): # Replaces map1 with map2 in the Mapmanager's childspace
@@ -64,32 +77,38 @@ func swap_map(map): # Replaces map1 with map2 in the Mapmanager's childspace
 	print(get_node(get_mapname()))
 
 
+
+
 func reparent_entities(map): # Reorganizes map entities to expected placement under parent singletons
 
 	var children = map.get_children()
+	var new_parent = get_parent().get_node("EntityManager")#CORELIB.get_main(self).get_node("EntityManager")
 
-	if children:
+	if new_parent and children:
 
-		var new_parent = get_parent().get_node("EntityManager")#CORELIB.get_main(self).get_node("EntityManager")
 		print(new_parent.get_name())
 
 		for n in children:
-
 			if n.is_in_group("entity"):
 
-				if n.is_in_group("player"):
-					add_to_group("persistent")
+				if n.is_in_group("player"):		# These groups relate to entity destruction when map is swapped later
+					n.add_to_group("persistent")
 				else:
 					n.add_to_group("mapbound")
+
 
 				map.remove_child(n)
 				new_parent.add_child(n)
 				n.propagate_position_transform()
 				
 
+
+
 func get_map_by_name(mapname: String) -> Node: # returns map with name mapname if it exists
 
 	return get_node(mapname)
+
+
 
 
 func check_map_redundancy(mapname: String): # returns true if map with name mapname already exists
@@ -99,6 +118,8 @@ func check_map_redundancy(mapname: String): # returns true if map with name mapn
 		return true
 	
 
+
+
 func get_current_mapname(): # Returns current mapname as a string
 
 	return current_mapname
@@ -107,12 +128,18 @@ func set_current_mapname(mapname): # Sets current mapname from string provided
 
 	current_mapname = mapname
 
+
+
 func get_current_map():
 	return get_node(get_current_mapname())
 
 
+
+
 func get_map_index():
 	pass
+
+
 
 func get_map_indices(): # Returns a dictionary of collected maps with their indices
 
@@ -122,6 +149,8 @@ func get_map_indices(): # Returns a dictionary of collected maps with their indi
 	for n in children:
 		collated_indices[n.get_name()] = n.get_index()
 	return collated_indices
+
+
 
 func juxtapose_maps(map1,map2): # Exchanges positions between nodes map1 and map2
 
@@ -133,8 +162,12 @@ func juxtapose_maps(map1,map2): # Exchanges positions between nodes map1 and map
 		move_child(map1, index2)
 		move_child(map2, index1)
 
+
+
 func get_map_children():
 	return get_node(get_mapname()).get_children()
+
+
 
 func remove_redundant_player(mapinstance):
 	if mapinstance.get_node("Player") and get_current_mapname():

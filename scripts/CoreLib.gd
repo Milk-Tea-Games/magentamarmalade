@@ -29,6 +29,22 @@ const INTERACT_DISTANCE = 250
 
 # Util
 
+func get_ancestor_by_name(node , name):
+	if node and name:
+		
+		var current_ancestor : Node = node.get_parent()
+
+		if current_ancestor: #
+
+			var current_ancestor_name : String = current_ancestor.get_name()
+
+			if current_ancestor_name == name:
+				return current_ancestor
+			else:
+				return get_ancestor_by_name(current_ancestor, name)
+
+
+
 func player_interact():
 	pass
 
