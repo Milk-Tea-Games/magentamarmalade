@@ -115,8 +115,11 @@ func test_add_map_as_string():
 
 func test_reparent_entities():
 	TestName = "Reparent Entities"
+	NextTestName = "Get Map By Name"
+
 	gut.p(str(_Main.get_node("EntityManager").get_children()))
 	var map = _Manager.get_current_map()
+
 # Test multiple entities reparenting that are not persistent
 	for n in 10:
 		var newentity = load("res://scenes/objects/MapWarper.tscn")
@@ -154,7 +157,7 @@ func test_reparent_entities():
 
 		assert_true(map_child_count > 0, "Map should have a child count above 0.")
 
-		_Manager.reparent_entities(map)
+		_Manager.reparent_entities(map) # The function being tested
 
 		var old_map_child_count = map_child_count # Retain old value for comparison
 
@@ -166,3 +169,16 @@ func test_reparent_entities():
 		assert_true(map_child_count == 0, "Map should have a child count of 0." + " Got " + str(map_child_count) + " instead.")
 
 		assert_true(emanager_child_count == old_map_child_count, "EntityManager new child count should equal old Map child count." + " Got " + str(emanager_child_count) + " and " + str(old_map_child_count))
+
+# < get_map_by_name() >
+
+func test_get_map_by_name():
+
+	TestName = "Get Map By Name"
+	NextTestName = "Reparent Entities"
+
+	var mapname = "ASP_corridor"
+
+	_Manager.add_map(mapname)
+
+	

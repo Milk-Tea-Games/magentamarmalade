@@ -3,6 +3,7 @@ class_name BaseObj
 extends Node2D
 
 const CORELIB = preload("res://scripts/CoreLib.gd")
+const ManagerName = "EntityManager"
 ## CUSTOM METHODS
 
 
@@ -27,17 +28,18 @@ func get_ancestor_by_name(node , name):
 				return get_ancestor_by_name(current_ancestor, name)
 		
 
+
 func get_main():
 
-	var main_name : String = get_tree().get_root().get_children()[0].get_name()
-	var expected_name = CORELIB.MAINNODENAME
-	if(main_name == expected_name):
-		return get_tree().get_root().get_node(main_name)
-	else:
-		return get_tree().get_root().get_node(main_name).get_node(expected_name)
+	return get_ancestor_by_name(self,"GAME")
+
+
 
 func get_manager():
-	return get_parent().get_parent().get_node("EntityManager")#get_main().get_node("EntityManager")
+	var _Main = get_main()
+	
+	if _Main.get_node(ManagerName):
+		return get_node(ManagerName)
 
 # Utility
 
@@ -64,12 +66,6 @@ func reverse_position_transform():
 		var pos = self._PhysicksBody.get_global_position()
 		self.set_global_position(pos)
 		propagate_position_transform()
-
-func rotate_by(r):
-	#var rot = get_rotation()
-	#rot += r
-	#set_rotation(rot)
-	pass
 
 
 #TODO bulk grouping, bulk signal declaration, bulk connection functions

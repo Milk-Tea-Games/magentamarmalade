@@ -27,7 +27,23 @@ func group_self_as_dynamic():
 const INTERACT_DISTANCE = 250
 
 
-# Util
+# UTIL
+
+
+func get_child_by_name(node, name): # returns child node with name name if found
+	#TODO Make recursive full array search for children
+	if node and name and typeof(node) == TYPE_OBJECT and typeof(name) == TYPE_STRING:
+		
+		var children = node.get_children()
+
+		if children.size() > 0:
+			for n in children:
+
+				if n.get_name() == name:
+
+					return n
+
+# Scenetree Util
 
 func get_ancestor_by_name(node , name):
 	if node and name:

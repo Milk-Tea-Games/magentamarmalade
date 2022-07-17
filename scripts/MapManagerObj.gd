@@ -113,7 +113,7 @@ func get_map_by_name(mapname: String) -> Node: # returns map with name mapname i
 
 func check_map_redundancy(mapname: String): # returns true if map with name mapname already exists
 
-	if get_node(mapname):
+	if CORELIB.get_child_by_name(self, mapname):
 		
 		return true
 	
