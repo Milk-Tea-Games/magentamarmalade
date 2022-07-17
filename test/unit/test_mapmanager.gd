@@ -179,6 +179,6 @@ func test_get_map_by_name():
 
 	var mapname = "ASP_corridor"
 
-	_Manager.add_map(mapname)
+	#_Manager.add_map(mapname)
 
 	
