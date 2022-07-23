@@ -10,7 +10,7 @@ var NextTestName : String
 # Before Each
 func before_each():
 	
-	gut.p("\n \n \n \n[]----[]----[]----[]----[]----[] TEST BEGIN MAPMANAGER: << " + TestName + ">> []----[]----[]----[]----[]----[] \n")
+	gut.p("\n \n \n \n[]----[]----[]----[]----[]----[] TEST BEGIN " + TestObjectName + " << " + TestName + ">> []----[]----[]----[]----[]----[] \n")
 	
 	# setup : Main
 	_Main = MainObj.new()
@@ -43,7 +43,7 @@ func before_each():
 func after_each():
 	_Main.free()
 
-	gut.p("[]----[]----[]----[]----[]----[] TEST END MAPMANAGER: << " + TestName + " >>  []----[]----[]----[]----[]----[] \n")
+	gut.p("[]----[]----[]----[]----[]----[] TEST END " + TestObjectName + " << " + TestName + " >>  []----[]----[]----[]----[]----[] \n")
 	TestName = NextTestName
 	if _Main:
 		pass
@@ -175,7 +175,7 @@ func test_reparent_entities():
 func test_get_map_by_name():
 
 	TestName = "Get Map By Name"
-	NextTestName = "Reparent Entities"
+	NextTestName = "EOF"
 
 	var mapname = "ASP_corridor_1"
 

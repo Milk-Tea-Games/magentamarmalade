@@ -5,7 +5,7 @@ ORGANIZATIONAL:
 		- Leave reused assets in more generalized asset folders @done
 	- Remove files from unused addons @done
 	- Fix broken asset file references @done
-	- Fix type casing to conform to godot docs suggested standards
+	- Fix type casing to conform to godot docs suggested standards @inprog
 
 GAMECODE:
 	- Clean up existing codebase @inprog
@@ -15,18 +15,18 @@ GAMECODE:
 	- Fix signal mismatching due to changes
 
 TESTING AND REVIEW:
-	- Create unit test plan @inprog
+	- Create unit test plan @done
 	- Perform test-ready tests @done
-	- Make appropriate tagging in code to fix any testbugs
+	- Make appropriate tagging in code to fix any testbugs @inprog
 	- Test until all clean
-	- Perform runtests
-	- Make code more test-ready
+	- Perform runtests @inprog
+	- Make code more test-ready @inprog
 
 
 ART:
 	
 	Chai:
-		- Redraw chai left and right sprites
+		- Redraw chai left and right sprites @inprog
 		- Redraw chai left and right walk animation
 		- Make chai idle animation (all directions)
 		- Draw chai diagonals (up and down) @done
@@ -38,10 +38,10 @@ ART:
 AUDIO: 
 	
 	External:
-		- Contact Asutenki
-		- Contact Noryokun
+		- Contact Asutenki @held
+		- Contact Noryokun @held
 	
 	Internal:
 		- Make baselines
-			- Chai room xylo/glock @inprog
+			- Chai room xylo/glock @done
 			- Dream transition SFX 1
