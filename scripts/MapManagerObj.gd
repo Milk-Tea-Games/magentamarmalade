@@ -28,23 +28,29 @@ func load_map(mapname): # Loads map of mapname from disk if map is in maps folde
 	if !check_map_redundancy(mapname) :
 
 		var map = load("res://scenes/levels/maps/" + mapname + ".tscn")
-		map = map.instance()
+
+		if map:
+
+			map = map.instance()
 		#print(map.get_children())
 		#remove_redundant_player(map)
-		reparent_entities(map)
+			reparent_entities(map)
 
-		return map
+			return map
 
 
 
 
 func add_map(map):
 
-	if typeof(map) == 4: # Check if map is a string and load it into an instantiated node
+	if typeof(map) == TYPE_STRING: # Check if map is a string and load it into an instantiated node
+		
 		map = load_map(map)
+	
+	if map and typeof(map) == TYPE_OBJECT:
 
-	add_child(map)
-	set_mapname(map.name)
+		add_child(map)
+		set_mapname(map.name)
 	
 
 

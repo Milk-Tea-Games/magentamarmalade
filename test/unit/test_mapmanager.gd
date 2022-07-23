@@ -177,8 +177,15 @@ func test_get_map_by_name():
 	TestName = "Get Map By Name"
 	NextTestName = "Reparent Entities"
 
-	var mapname = "ASP_corridor"
+	var mapname = "ASP_corridor_1"
 
-	#_Manager.add_map(mapname)
+	_Manager.add_map(mapname)
+
+	var map = _Manager.get_map_by_name(mapname)
+
+	assert_true(typeof(map) == TYPE_OBJECT, "Returned Map type should be object.")
+
+	assert_true(_Manager.get_current_mapname() == map.get_name(), "Map object name should be identical to name input.")
+
 
 	

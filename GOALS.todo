@@ -29,11 +29,11 @@ ART:
 		- Redraw chai left and right sprites
 		- Redraw chai left and right walk animation
 		- Make chai idle animation (all directions)
-		- Draw chai diagonals (up and down)
+		- Draw chai diagonals (up and down) @done
 	
 	Environments:
 		- Determine map scale factors
-		- Recompose/Redraw chai room
+		- Recompose/Redraw chai room @inprog
 
 AUDIO: 
 	
