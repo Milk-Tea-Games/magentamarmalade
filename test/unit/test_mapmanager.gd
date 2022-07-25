@@ -65,16 +65,14 @@ func after_each():
 
 
 
-# Ready Check
+# Setup Check
 
 func test_setup_check():
 	TestName = "Setup"
-	NextTestName = "Add Map"
+	NextTestName = "Check Player Transpose"
 
 	gut.p("|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_||| PASSING TEST CHECK |||_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n")
-	assert_eq(_Main.get_name(),"GAME","This is a placeholder test. SHOULD PASS.") # MainObj currently only runs the GAME sector of the game.
-	#TODO organize layers of game window and make Main the container node for everything
-
+	assert_eq(_Main.get_name(),"GAME","This is a placeholder test. SHOULD PASS.")
 
 	var children = _Main.get_children()
 	var size = children.size()
@@ -88,7 +86,7 @@ func test_setup_check():
 	for n in children: # Iteratively print names of children
 		gut.p( "Child: " + n.name)
 	
-	assert_true(typeof(_Main.get_node("MapManager")) == TYPE_OBJECT, "MapManager should exist.")
+	assert_true(typeof(_Main.get_node(TestObjectName)) == TYPE_OBJECT, TestObjectName + " should exist.")
 
 
 

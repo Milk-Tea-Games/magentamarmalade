@@ -3,7 +3,7 @@ extends GutTest
 var _Main : Node
 var _Manager : Node
 var TestObjectName : String = "EntityManager"
-var TestName : String
+var TestName : String = "Setup"
 var NextTestName : String
 #SETUP
 
@@ -64,3 +64,62 @@ func after_each():
 ############################################### 	      G 	###############################################
 
 
+# Setup Check
+
+func test_setup_check():
+	TestName = "Setup"
+	NextTestName = "Transpose Player"
+
+	gut.p("|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_||| PASSING TEST CHECK |||_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|\n")
+	
+	assert_eq(_Main.get_name(),"GAME","This is a placeholder test. SHOULD PASS.")
+
+	var children = _Main.get_children()
+	var size = children.size()
+
+
+	assert_eq(size,2, "_Main child count test") # MainObj creates 2 children on ready, MapManager and EntityManager
+
+
+	gut.p("This is a setup test. MainObj exists and has " + str(size) + " children: ") 
+
+	for n in children: # Iteratively print names of children
+		gut.p( "Child: " + n.name)
+	
+	assert_true(typeof(_Main.get_node(TestObjectName)) == TYPE_OBJECT, TestObjectName + " should exist.")
+
+# < transpose_player >
+
+func test_transpose_player():
+
+	TestName = "Transpose Player"
+	NextTestName = "Player Interact"
+	# Player setup
+	var player = load("res://scenes/objects/Player.tscn")
+	player = player.instance()
+	_Manager.add_child(player)
+
+	# Player must be real
+	assert_has_method(player, "connect_to_entitymanager", "Player should have method 'connect_to_entitymanager' ")
+
+	var oldpos = player.get_position()
+	var newpos = oldpos + Vector2(64,64)
+
+	_Manager.transpose_player(newpos)
+
+	var evennewerpos = player.get_position()
+
+	assert_ne(newpos, oldpos, "Newpos should not be the same as oldpos.")
+	assert_eq(newpos,evennewerpos, "newpos and evennewerpos should be the same")
+
+
+# < Player Interact>
+
+func test_player_interact():
+	
+	TestName = "Transpose Player"
+	NextTestName = "Player Interact"
+	# Player setup
+	var player = load("res://scenes/objects/Player.tscn")
+	player = player.instance()
+	_Manager.add_child(player)

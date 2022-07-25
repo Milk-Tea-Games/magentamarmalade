@@ -161,7 +161,7 @@ func setup_camera():
 # BUILTIN Functions
 
 func _init():
-	
+	set_name("Player")
 # Groupings
 	#add_to_group("entity")
 	add_to_group("player")
@@ -174,7 +174,7 @@ func _ready():
 
 	# Outbound Signals
 
-	emit_signal("playerBeganExisting", name)
+	emit_signal("playerBeganExisting")
 	
 	
 
