@@ -58,23 +58,6 @@ func check_overlap_player(): # checks for overlapping nodes and performs an over
 	if(overlappers):
 		call_on_overlaps(overlappers)
 
-func get_player_overlaps(): # grabs overlapping nodes if returned by check
-	# REVIEW entire function
-	# TODO hybrid approach using Area2Ds and/or basic trig
-	var _Player = get_node("Player")
-	var _PlayerShape = _Player.get_shape()
-	var shape_radius = _Player.get_shape_radius()
-	var position = _PlayerShape.get_global_position()
-	var siblings = get_children()
-	var close_siblings = []
-
-	for n in siblings:
-		var sibling_position = n._PhysicksBody.get_global_position() # TODO wrap child variable retrieval in parent functions for controlled variable exposure
-		var sibling_radius = n._Shape.get_shape().get_radius() # TODO ^
-		var distance = position.distance_to(sibling_position)
-		if( (distance < (shape_radius + sibling_radius) ) && !n.is_in_group("player")): # REVIEW examine logic 
-			close_siblings.append(n)
-	return close_siblings
 
 
 func call_on_overlaps(overlappers):	# calls overlap functions for any overlapping nodes

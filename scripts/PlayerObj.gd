@@ -32,8 +32,8 @@ onready var _Shape = get_node(@'PhysicksBody/Shape')
 onready var _Sprite = get_node(@'PhysicksBody/Sprite')
 onready var _Animation_Player = $AnimationPlayer
 onready var _Camera = get_node(@'PhysicksBody/Camera2D')
-onready var _Particles #= _PhysicksBody.get_node(@'CPUParticles2D')
-
+onready var _Area = $Area2D
+onready var _Particles
 # Physics vars
 onready var space_state = get_world_2d().direct_space_state
 

@@ -13,6 +13,7 @@ GAMECODE:
 	- Refactor code for unit testing integration @inprog
 	- Optimize code @inprog
 	- Fix signal mismatching due to changes
+	- Rewrite node overlap detection code for all objects using Area2D
 
 TESTING AND REVIEW:
 	- Create unit test plan @done
@@ -33,7 +34,9 @@ ART:
 	
 	Environments:
 		- Determine map scale factors
-		- Recompose/Redraw chai room @inprog
+		- Recompose/Redraw chai room @done
+		- Chai room tileset
+		- Chai house tileset
 
 AUDIO: 
 	

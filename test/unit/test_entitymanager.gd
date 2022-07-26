@@ -116,10 +116,11 @@ func test_transpose_player():
 # < Player Interact>
 
 func test_player_interact():
-	
+
 	TestName = "Transpose Player"
 	NextTestName = "Player Interact"
 	# Player setup
 	var player = load("res://scenes/objects/Player.tscn")
 	player = player.instance()
 	_Manager.add_child(player)
+	
