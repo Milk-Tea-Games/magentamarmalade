@@ -54,9 +54,10 @@ func realign_camera():
 # overlap collision
 
 func check_overlap_player(): # checks for overlapping nodes and performs an overlap_interact if they do overlap
-	var overlappers = get_player_overlaps()
-	if(overlappers):
-		call_on_overlaps(overlappers)
+	pass
+	#var overlappers = get_player_overlaps()
+	#if(overlappers):
+	#	call_on_overlaps(overlappers)
 
 
 

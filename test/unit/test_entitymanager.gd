@@ -123,4 +123,3 @@ func test_player_interact():
 	var player = load("res://scenes/objects/Player.tscn")
 	player = player.instance()
 	_Manager.add_child(player)
-	

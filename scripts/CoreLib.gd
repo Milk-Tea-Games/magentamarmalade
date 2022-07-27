@@ -2,12 +2,12 @@ class_name MagentaLib
 extends Reference
 
 # Constants
-const MAINNODENAME = "GAME"
+
+const GAME_SCENE_NAME = "GAME"
 const InputMap = ["left","right","up","down"]
 const InputVectors = [[-1,0],[1,0],[0,-1],[0,1]]
 enum VectorEnum {left,right,up,down}
 const test = "CoreLib"
-
 # Dynamic Object
 
 const VECTOR_ZERO = Vector2(0,0)
@@ -66,7 +66,7 @@ func player_interact():
 
 func get_main(node):
 	var main_name : String = node.get_tree().get_root().get_children()[0].get_name()
-	var expected_name = MAINNODENAME
+	var expected_name = GAME_SCENE_NAME
 	if(main_name == expected_name):
 		return node.get_tree().get_root().get_node(main_name)
 	elif main_name == "Gut":

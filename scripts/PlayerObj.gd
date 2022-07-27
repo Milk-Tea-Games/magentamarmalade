@@ -115,6 +115,7 @@ func animate_by_velocity():
 func swappies(): #TODO remove test function
 	emit_signal("sentMapSwapRequest", "Chai_room")
 
+
 func interact_entity():
 	var direction_vector = InputVectors[VectorEnum[facedir]]
 	direction_vector = Vector2(direction_vector[0],direction_vector[1])
@@ -186,12 +187,13 @@ func _ready():
 	
 func _process(delta):
 	animate_by_velocity()
-	reverse_position_transform()
+	#reverse_position_transform()
 	if Input.is_action_pressed("ui_interact"):
 		swappies()##interact_entity()
 	elif Input.is_action_pressed("ui_cancel"):
 		send_quit_request()
-	
+	print(get_global_position())
+	print(_PhysicksBody.get_global_position())
 	check_overlap()
 	#print(facedir)
 	#print(InputVectors[VectorEnum[facedir]])

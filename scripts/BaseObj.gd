@@ -4,12 +4,8 @@ extends Node2D
 
 const CORELIB = preload("res://scripts/CoreLib.gd")
 const ManagerName = "EntityManager"
+const MainName = CORELIB.GAME_SCENE_NAME
 ## CUSTOM METHODS
-
-
-# Health
-
-
 
 
 # Managers
@@ -41,32 +37,60 @@ func get_manager():
 	if _Main.get_node(ManagerName):
 		return get_node(ManagerName)
 
+
+
 # Utility
 
 
-
-func get_pos(): #TODO examine further difference between position and global position and reimplement
+func get_pos() -> Vector2: #TODO examine further difference between position and global position and reimplement
 	return get_global_position()
+
 
 func find_in_array(): #TODO actually write function
 	pass		
 
 
+func get_physicksbody(): # Returns primary physicsbody
+
+	if self._PhysicksBody:
+
+		return self._PhysicksBody
 
 # Transforms
 
-func propagate_position_transform(): # Corrects position of nodes children to be identical to parent
+func defray_move_call() -> void : # Skips a single call of move_and_slide for the node's physicsbody
+
+	var _PhysicksBody = get_physicksbody()
+
+	if _PhysicksBody and _PhysicksBody.has_method("move_and_slide_checked"):
+
+		_PhysicksBody.defray_move = true
+
+
+
+func propagate_position_transform() -> void : # Corrects position of nodes children to be identical to parent
 	#TODO implement in physicsbody2d process logic instead of haphazardly here
-	if self._PhysicksBody:
-		self._PhysicksBody.set_global_position(self.get_global_position())
 
-func reverse_position_transform():
+	var global_pos = self.get_global_position()
+
+	var _PhysicksBody = self.get_physicksbody()
+
+	if _PhysicksBody:
+
+		
+		_PhysicksBody.set_position(CORELIB.VECTOR_ZERO)
+
+		_PhysicksBody.set_global_position(global_pos) #REVIEW potentially unnecessary
+
+		defray_move_call()
+
+
+func reposition_and_propagate(position : Vector2 = Vector2(0,0)) -> void :
 	#TODO remove in accordance with reimplementation of above, physicsbody2d node logic can do this without needing outside rectification functions
-	if self._PhysicksBody:
-		var pos = self._PhysicksBody.get_global_position()
-		self.set_global_position(pos)
-		propagate_position_transform()
+	
+	set_global_position(position)
 
+	propagate_position_transform()
 
 #TODO bulk grouping, bulk signal declaration, bulk connection functions
 #TODO generic instantiation functions for reimplementation
