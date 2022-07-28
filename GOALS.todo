@@ -5,12 +5,12 @@ ORGANIZATIONAL:
 		- Leave reused assets in more generalized asset folders @done
 	- Remove files from unused addons @done
 	- Fix broken asset file references @done
-	- Fix type casing to conform to godot docs suggested standards @inprog
+	- Fix type casing to conform to godot docs suggested standards @done
 
 GAMECODE:
 	- Clean up existing codebase @inprog
-	- Place appropriate dev tags in code for future optimization @inprog
-	- Refactor code for unit testing integration @inprog
+	- Place appropriate dev tags in code for future optimization @done
+	- Refactor code for unit testing integration
 	- Optimize code @inprog
 	- Fix signal mismatching due to changes
 	- Rewrite node overlap detection code for all objects using Area2D
@@ -18,16 +18,16 @@ GAMECODE:
 TESTING AND REVIEW:
 	- Create unit test plan @done
 	- Perform test-ready tests @done
-	- Make appropriate tagging in code to fix any testbugs @inprog
+	- Make appropriate tagging in code to fix any testbugs
 	- Test until all clean
-	- Perform runtests @inprog
-	- Make code more test-ready @inprog
+	- Perform runtests
+	- Make code more test-ready
 
 
 ART:
 	
 	Chai:
-		- Redraw chai left and right sprites @inprog
+		- Redraw chai left and right sprites
 		- Redraw chai left and right walk animation
 		- Make chai idle animation (all directions)
 		- Draw chai diagonals (up and down) @done
