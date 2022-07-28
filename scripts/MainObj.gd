@@ -20,17 +20,23 @@ var Player_exists = false
 
 func _ready():
 	#randomize()
-	var _EntityManager = EntityManager.new()
+	var _EntityManager : EntityManager = EntityManager.new()
+
 	_EntityManager.set_name("EntityManager")
-	var _MapManager = MapManager.new()
+
+	var _MapManager : MapManager = MapManager.new()
+
 	_MapManager.set_name("MapManager")
+
 	#
 	add_child(_MapManager)
+
 	add_child(_EntityManager)
 
 	get_node("MapManager").add_map("ASP_face")
 	#print(get_tree().get_root().get_children()[0].get_name())
 	pass
+	
 func _process(_delta):
 
 	pass

@@ -6,22 +6,22 @@ var CORELIB = MagentaLib.new()
 
 # Constants
 
-var InputMap = CORELIB.InputMap
-var InputVectors = CORELIB.InputVectors
-var VectorEnum = CORELIB.VectorEnum
-var MAX_SPEED = CORELIB.MAX_SPEED
-var vectorZero = CORELIB.VECTOR_ZERO
+var InputMap : Array = CORELIB.InputMap
+var InputVectors : Array = CORELIB.InputVectors
+var VectorEnum : Array = CORELIB.VectorEnum
+var MAX_SPEED : int = CORELIB.MAX_SPEED
+var vectorZero : Vector2 = CORELIB.VECTOR_ZERO
 var test = "PlayerObj"
 
 # Class-Specific variables
 
-var velocity = CORELIB.VECTOR_ZERO
-var acceleration = 1000
-var friction = 2
-var facedir = "down"
-var btndown = null
+var velocity : Vector2 = CORELIB.VECTOR_ZERO
+var acceleration : int = 1000
+var friction : int = 2
+var facedir : String = "down"
+var btndown : bool = false
 
-var defray_move = false
+var defray_move : bool = false
 
 
 #warning-ignore: return_value_discarded
@@ -29,9 +29,12 @@ var defray_move = false
 # Signals
 
 
-func change_facedir(new_facedir) -> void :
+func change_facedir(new_facedir) -> void:
+
 	facedir = new_facedir
-	var Parent = get_parent()
+
+	var Parent : Node = get_parent()
+
 	Parent.facedir = facedir
 
 ## Motion
@@ -41,9 +44,9 @@ func move_and_slide_checked(linear_vel : Vector2 , _up_dir : Vector2 = CORELIB.V
 	# normal move and slide function, but with single-frame physics move call defray enabled
 
 	if defray_move:
-		print(str(defray_move))
 
-		defray_move = null
+		defray_move = false
+
 		return
 
 	else:
@@ -56,19 +59,31 @@ func move_by_control() -> void:
 	var movementResult: Vector2 = Vector2(0,0)
 
 	for i in 4:
+
 		var j = InputMap[i]
+
 		if Input.is_action_pressed("ui_" + j):
+
 			btndown = true
+
 			change_facedir(j)
-			var input_vec = InputVectors[i]
+
+			var input_vec : Array = InputVectors[i]
+
 			movementResult = Vector2(input_vec[0],input_vec[1])
+
 			movementResult *= acceleration
+
 			velocity += movementResult
+
 	if movementResult == vectorZero:
 
 		if velocity.length() < 1:
+
 			velocity = vectorZero
+
 		else:
+
 			velocity /= friction
 
 	velocity = velocity.clamped(MAX_SPEED)
@@ -79,7 +94,9 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+
 	move_by_control()
+	
 	move_and_slide(velocity)
 	#test.set_health(get_position().y)
 	

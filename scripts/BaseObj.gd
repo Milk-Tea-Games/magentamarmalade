@@ -19,7 +19,7 @@ signal interact_overlapped
 
 
 func get_manager():
-	var _Main = get_main()
+	var _Main : Object = get_main()
 	
 	if _Main.get_node(ManagerName):
 		return get_node(ManagerName)
@@ -66,7 +66,7 @@ func get_ancestor_by_name(node , name):
 
 func get_ancestor_by_method(node : Object, methodname : String) -> Object: # searches personal tree until a node with the method is found or runs out of parents 
 
-	var current_ancestor = node.get_parent()
+	var current_ancestor : Object = node.get_parent()
 
 	if current_ancestor and current_ancestor.has_method(methodname):
 
@@ -101,7 +101,7 @@ func get_areabody():
 
 func defray_move_call() -> void : # Skips a single call of move_and_slide for the node's physicsbody
 
-	var _PhysicksBody : Node = get_physicksbody()
+	var _PhysicksBody : Object = get_physicksbody()
 
 	if _PhysicksBody and _PhysicksBody.has_method("move_and_slide_checked"):
 
@@ -114,7 +114,7 @@ func propagate_position_transform() -> void : # Corrects position of nodes child
 
 	var global_pos : Vector2 = self.get_global_position()
 
-	var _PhysicksBody : Node = self.get_physicksbody()
+	var _PhysicksBody : Object = self.get_physicksbody()
 
 	if _PhysicksBody:
 
@@ -143,7 +143,7 @@ func get_overlaps() -> Array: # returns an array of all overlapping area2ds
 
 	if get_areabody():
 
-		var _AreaBody : Node = get_areabody()
+		var _AreaBody : Object = get_areabody()
 
 		overlapping_areas = _AreaBody.get_overlapping_areas()
 	

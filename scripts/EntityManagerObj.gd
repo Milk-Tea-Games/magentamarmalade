@@ -12,48 +12,73 @@ signal deliveredMapSwapRequest(newmap)
 
 # Player
 
-func transpose_player(value): # moves player to global Vector2 pos
+func transpose_player(value) -> void: # moves player to global Vector2 pos
 
 	#REVIEW examine positioning caveats on kinematicbody
 
-	var Player = get_player()
-	var end_pos := Vector2(500,500)
+	var Player : Player = get_player()
+	var end_pos : Vector2 = Vector2(500,500)
+
 	if Player:
+
 		#print("THERE IS A VALUE")
 		match typeof(value):
+
 			TYPE_VECTOR2:
+
 				end_pos = value
+
 			TYPE_INT:
+
 				if value < 2: # Internal node naming does not append 0 or 1 to identical node names # NB, implement a better solution to this bandage
+
 					value = ""
-				var Warper = get_node("MapWarper" + str(value))
+
+				var Warper : Object = get_node("MapWarper" + str(value))
+
 				end_pos = Warper.get_position() + Warper.inbound.return_vector
 
 	print(end_pos)
+
 	Player.set_global_position(end_pos)
+
 	Player.reverse_position_transform()
 
 # interaction
 
-func get_player():
-	var Player = get_node("Player")
+
+func get_player() -> Player:
+
+	var Player : Player = get_node("Player")
+
 	return Player
 
-func handle_player_interact(result, entity): # Triggers on Player interact
+
+
+func handle_player_interact(result, entity) -> void: # Triggers on Player interact
 	
 	print("Player Interacted Successfully!")
+
 	if result:
+
 		print(name + " : " + result.collider.get_class() + " class was interacted with!")
+
 		result.collider.on_interact(entity)
+
 	else:
+
 		print ("failedresult")
 
-func realign_camera():
+
+
+func realign_camera() -> void:
+
 	get_player().setup_camera()
 
 # overlap collision
 
-func check_overlap_player(): # checks for overlapping nodes and performs an overlap_interact if they do overlap
+func respond_to_overlap() -> void: # checks for overlapping nodes and performs an overlap_interact if they do overlap
+
 	pass
 	#var overlappers = get_player_overlaps()
 	#if(overlappers):
@@ -61,47 +86,68 @@ func check_overlap_player(): # checks for overlapping nodes and performs an over
 
 
 
-func call_on_overlaps(overlappers):	# calls overlap functions for any overlapping nodes
+func call_on_overlaps(overlappers) -> void:	# calls overlap functions for any overlapping nodes
 	
 	if(overlappers && typeof(overlappers) == TYPE_ARRAY && overlappers.size() > 0):
+
 		for n in overlappers:
+
 			if n.on_overlap_player():
+
 				n.overlap_player()
 
 
 # existence/init
-func on_playerBeganExisting():
+func on_playerBeganExisting() -> void:
+
 	print("Manager: Player Exists!")
+
 	pass
 
+
+
 # Sibling: MapManager
-func handle_map_swap(destination): # Triggers on entity mapswap request
+
+
+func handle_map_swap(destination) -> void: # Triggers on entity mapswap request
+
 # REVIEW examine use of signals here
+
 	emit_signal("deliveredMapSwapRequest", destination)
 
-func freeMapbound(): # Frees entities that cannot be held between maps
-	var children = get_children()
+
+
+func freeMapbound() -> void: # Frees entities that cannot be held between maps
+
+	var children : Array = get_children()
+
 	for n in children:
+
 		if n.is_in_group("mapbound"):
+
+
 			remove_child(n)
+
 			n.queue_free()
 			
 
 
 # SYSTEM
-func send_quit_notif(): # Triggers on entity quit request
-	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+func send_quit_notif() -> void: # Triggers on entity quit request
 
+	get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
 
 
 
 # Signal Connections
 
 
+func connect_mapmanager_signals() -> void:
 
-func connect_mapmanager_signals():
-	var _MapManager = get_sibling("MapManager")
+	var _MapManager : Object = get_sibling("MapManager")
+
 	connect("deliveredMapSwapRequest", get_parent().get_node("MapManager"), "swap_map")
+
 	_MapManager.connect("requestedFreeMapbound", self, "freeMapbound")
 
 func _ready():

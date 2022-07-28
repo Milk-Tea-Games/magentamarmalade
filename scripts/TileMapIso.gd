@@ -3,7 +3,7 @@ class_name TileMapIsoMM, "res://assets/images/editor/icon_TileMapIso.png"
 
 extends TileMap
 
-var CELL_SIZE = Vector2(32,16)
+var CELL_SIZE : Vector2 = Vector2(32,16)
 
 
 func _init():

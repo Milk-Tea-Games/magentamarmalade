@@ -49,7 +49,8 @@ func get_ancestor_by_name(node : Object, name : String):
 func get_main(node : Object):
 
 	var main_name : String = node.get_tree().get_root().get_children()[0].get_name()
-	var expected_name = GAME_SCENE_NAME
+
+	var expected_name : String = GAME_SCENE_NAME
 
 	if(main_name == expected_name):
 
@@ -57,7 +58,7 @@ func get_main(node : Object):
 
 	elif main_name == "Gut":
 
-		var dest = node.get_tree().get_root().get_node(main_name)
+		var dest : Object = node.get_tree().get_root().get_node(main_name)
 
 		dest = dest.get_node("@@93/GAME")
 		#dest = dest.get_node("GAME")
@@ -67,7 +68,7 @@ func get_main(node : Object):
 
 func get_ancestor_by_method(node : Object, methodname : String) -> Object: # searches personal tree until a node with the method is found or runs out of parents 
 	
-	var current_ancestor = node.get_parent()
+	var current_ancestor : Object = node.get_parent()
 
 	if current_ancestor and current_ancestor.has_method(methodname):
 

@@ -27,9 +27,10 @@ func impulse_move():
 func dash_move():
 	pass
 
-func rand_vec():
-	var neg1 = rand_range(-1,1)
-	var neg2 = rand_range(-1,1)
+func rand_vec() -> Vector2:
+	
+	var neg1 : float = rand_range(-1,1)
+	var neg2 : float = rand_range(-1,1)
 
 	
 	return Vector2(neg1,neg2)
