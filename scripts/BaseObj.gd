@@ -14,6 +14,20 @@ var area_overlaps = []
 signal interact_overlapped
 
 
+
+
+func connect_multiple(connect_spec_list) -> Array: # Connects multiple signals from this node to target nodes defined in the connect_spec_list
+
+	var connection_ints : Array = []
+
+	for n in connect_spec_list:
+
+		var connection_int : int = connect(n.signal, n.target, n.targetmethod, n.binds, n.flag)
+
+		connection_ints.push_back(connection_int)
+
+	return connection_ints
+
 # Managers
 
 
